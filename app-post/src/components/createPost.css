@@ -1,0 +1,64 @@
+.container_post {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.wrapper_post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.wrapper_post form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper_post input {
+    height: 40px;
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    padding: 10px;
+    border: none;
+    background: #efefefd1;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(104, 103, 103, 0.1);
+}
+
+.wrapper_post textarea {
+    resize: none;
+    height: 50px;
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #efefefd1;
+    box-shadow: 0 4px 6px rgba(104, 103, 103, 0.1);
+}
+
+.wrapper_post button {
+    width: 80px;
+    background: #7A7CF0;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.wrapper_post button:hover {
+    opacity: .8;
+    transition: .5s;
+}

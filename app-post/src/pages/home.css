@@ -1,0 +1,10 @@
+.container_home {
+    padding-top: 60px;
+    background: #F5F5F5;
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+
+.home-dark-mode {
+    background: #1D2026;
+}
