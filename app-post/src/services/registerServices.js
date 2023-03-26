@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://127.0.0.1:3001/api/users'
+const baseUrl = 'https://api-posts-production.up.railway.app/api/users'
 
 const register = async (credentials) => {
     const { data } = await axios.post(baseUrl, credentials)

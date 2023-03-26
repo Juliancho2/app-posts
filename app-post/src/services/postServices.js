@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseUrl = 'http://127.0.0.1:3001/api/posts'
+let baseUrl = 'https://api-posts-production.up.railway.app/api/posts'
 let token = null
 
 const setToken = (newToken) => {
@@ -118,7 +118,7 @@ const addLike = async (idPost) => {
 }
 
 const searchPosts = async (content) => {
-    const searchUrl = `http://127.0.0.1:3001/api/search?content=${content}`
+    const searchUrl = `https://api-posts-production.up.railway.app/api/search?content=${content}`
     try {
         const res = await axios.get(searchUrl)
         const { data } = res

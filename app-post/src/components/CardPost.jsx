@@ -29,9 +29,9 @@ const CardPost = ({ posts }) => {
     // Función que maneja la acción de dar like a un post
     const handleLike = (id) => {
         // Se dispacha la acción para agregar un like a un post
-        dispatch(addLikeToPost(id))
+        dispatch(addLikeToPost(id));
         // Se dispacha la acción para establecer los likes del post
-        dispatch(setLikes({ id, userId }))
+        dispatch(setLikes({ id, userId }));
         // Se actualiza el estado de isActive
         setIsActive((prev) => !prev)
     }

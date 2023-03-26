@@ -7,6 +7,21 @@
 
 }
 
+.arrow-left {
+    font-size: 2rem;
+    padding: 5px 20px;
+}
+
+.arrow-left a {
+    text-decoration: none;
+    color: #828282;
+}
+
+.arrow-left a:hover {
+    opacity: .5;
+    transition: all .6s;
+}
+
 .container-comments-details-dark {
     background: #1D2026;
 }

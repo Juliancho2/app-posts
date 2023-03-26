@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { addComent, addLike, createPost, delComment, delPost, getAllCommentsToPost, getAllPosts, searchPosts } from '../services/postServices';
+import { setLikes } from '../slice/postSlice';
 
 // Función thunk para agregar un post
 export const addPost = createAsyncThunk(
@@ -99,6 +100,7 @@ export const addLikeToPost = createAsyncThunk(
             // Llamada a la función que agrega like a un post
             const response = await addLike(idPost)
             return response;
+
         } catch (error) {
             throw error;
         }

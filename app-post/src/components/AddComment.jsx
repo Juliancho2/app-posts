@@ -12,6 +12,8 @@ const initialState = {
 const AddComment = () => {
     // Estado para el contenido del comentario a agregar
     const [contentToAdd, setContentToAdd] = useState(initialState)
+    const [excessCharacters, setexcessCharacters] = useState(null)
+
     // Acceder al estado de tema oscuro
     const { darkMode } = useSelector(state => state.theme)
     // Acceder al dispatch para ejecutar acciones
@@ -23,16 +25,28 @@ const AddComment = () => {
     // Función que maneja el cambio en la entrada de texto para el contenido del comentario
     const handleChange = (e) => setContentToAdd({ content: e.target.value })
 
+
     // Función que maneja la presentación del formulario para agregar un comentario
     const handleSubmit = (e) => {
         e.preventDefault()
-        // Ejecutar la acción de agregar comentario
-        dispatch(addCommentToPost({ idPost, contentToAdd }))
-        // Establecer el contenido del comentario de nuevo en su estado inicial
-        setContentToAdd(initialState)
+        if (contentToAdd.content.length > 60) {
+            setexcessCharacters("60 characters have been exceeded")
+            setTimeout(() => {
+                setexcessCharacters(null)
+            }, 2000)
+        }
+        else {
+            // Ejecutar la acción de agregar comentario
+            dispatch(addCommentToPost({ idPost, contentToAdd }))
+            // Establecer el contenido del comentario de nuevo en su estado inicial
+            setContentToAdd(initialState)
+        }
     }
     return (
         <div className={`container-add-comment ${darkMode ? 'container-add-comment-dark' : ''}`}>
+            {
+                excessCharacters && <p>{excessCharacters}</p>
+            }
             <div className='wrapper-comment'>
                 <form onSubmit={handleSubmit}>
                     <textarea placeholder='Write a comment...' value={contentToAdd.content} onChange={handleChange} />

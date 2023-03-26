@@ -12,6 +12,7 @@ import { setToken } from "./services/postServices"
 import { fetchPosts } from "./thunks/thunks"
 import SearchPosts from "./pages/SearchPosts"
 import { setTheme } from "./slice/themeSlice"
+import './App.css'
 
 
 function App() {

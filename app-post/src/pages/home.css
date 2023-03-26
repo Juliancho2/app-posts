@@ -1,8 +1,11 @@
 .container_home {
+    position: relative;
     padding-top: 60px;
     background: #F5F5F5;
     min-height: 100vh;
     padding-bottom: 30px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .home-dark-mode {

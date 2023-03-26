@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import AddComment from '../components/AddComment'
 import CardPost from '../components/CardPost'
 import CommentsUser from '../components/CommentsUser'
@@ -15,7 +16,6 @@ import './commentsDetails.css'
 const CommentsDetails = () => {
     const { postComments, posts, isLoading } = useSelector(state => state.posts)
     const { darkMode } = useSelector(state => state.theme)
-    const [loader, setLoader] = useState(false)
     const dispatch = useDispatch()
     const { idPost } = useParams()
 
@@ -29,10 +29,13 @@ const CommentsDetails = () => {
 
     return (
         <div className={`container-comments-details ${darkMode ? 'container-comments-details-dark' : ''}`}>
-            {
-                loader && <Loader />
-            }
             <Header />
+            <div className='arrow-left'>
+                <Link to={'/page'}><FontAwesomeIcon icon="fa-solid fa-arrow-left" /></Link>
+            </div>
+            {
+                !postDetail && <Loader />
+            }
             <main>
                 <div>
                     {

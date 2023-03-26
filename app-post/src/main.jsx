@@ -5,12 +5,12 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faHeart, faPaperPlane, faLeftLong } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faHeart, faPaperPlane, faLeftLong, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faSun, faMoon, faSquareMinus } from '@fortawesome/free-regular-svg-icons'
 import { Provider } from 'react-redux'
 import store from './app/store'
 
-library.add(faUser, faHeart, faComment, faSun, faMoon, faPaperPlane, faLeftLong, faSquareMinus)
+library.add(faUser, faHeart, faComment, faSun, faMoon, faPaperPlane, faLeftLong, faSquareMinus, faArrowLeft)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
