@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import MessageErrorValidate from '../components/MessageErrorValidate'
 import { useForm } from '../hooks/useForm'
-import './register.css'
+import style from  './register.module.css'
 
 const initialForm = {
     name: "",
@@ -48,7 +47,7 @@ const validateForm = (form) => {
 
 }
 
-const Register = () => {
+const Register = ({ setChangeForm }) => {
     const { form,
         errors,
         response,
@@ -57,23 +56,35 @@ const Register = () => {
         handleSubmit } = useForm(initialForm, validateForm);
 
     return (
-        <div className='container'>
-            <div className='wrapper'>
-                <h2 className='title-register'>REGISTER</h2>
+        <div className={style.container}>
+            <div className={style.wrapper}>
+                <h2 className={style.title_register}>Sign Up</h2>
                 <form onSubmit={handleSubmit}>
                     <label>Name*</label>
-                    <input name='name' value={form.name} type="text" onBlur={handleBlur} onChange={handleChange} />
+                    <div>
+                        <input name='name' value={form.name} type="text" onBlur={handleBlur} onChange={handleChange} />
+                    </div>
                     <label>Lastname*</label>
-                    <input name='lastname' value={form.lastname} type="text" onBlur={handleBlur} onChange={handleChange} />
+                    <div>
+                        <input name='lastname' value={form.lastname} type="text" onBlur={handleBlur} onChange={handleChange} />
+                    </div>
                     <label>Username*</label>
-                    <input name='username' value={form.username} type="text" autoComplete='username' onBlur={handleBlur} onChange={handleChange} />
+                    <div>
+                        <input name='username' value={form.username} type="text" autoComplete='username' onBlur={handleBlur} onChange={handleChange} />
+                    </div>
                     <label id='password'>Password*</label>
-                    <input name='password' value={form.password} type="password" autoComplete="new-password" onBlur={handleBlur} onChange={handleChange} />
+                    <div>
+                        <input name='password' value={form.password} type="password" autoComplete="new-password" onBlur={handleBlur} onChange={handleChange} />
+                    </div>
                     <label>Confirm password*</label>
-                    <input name='confirmPassword' value={form.confirmPassword} type="password" autoComplete="new-password" onBlur={handleBlur} onChange={handleChange} />
-                    <button>SIGN UP</button>
+                    <div>
+                        <input name='confirmPassword' value={form.confirmPassword} type="password" autoComplete="new-password" onBlur={handleBlur} onChange={handleChange} />
+                    </div>
+                    <button>Sign up</button>
                 </form>
-                <Link to='/' className='btn-back'><FontAwesomeIcon icon="fa-solid fa-left-long" /><small>Back</small></Link>
+                <div   className={style.btn_back}>
+                    <p>Do you already have an account? <span onClick={() => setChangeForm(false)} >Log in</span></p>
+                </div>
                 {
                     (Object.keys(errors).length >= 1) && <MessageErrorValidate message={Object.values(errors)} />
                 }

@@ -1,35 +1,35 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DropdownMenu from './DropdownMenu'
-import './header.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
+import styles from './header.module.css'
+import Logo from './Logo'
 const Header = () => {
-    const [search, setSearch] = useState("")
-    const navigate = useNavigate()
-
-    // Se actualiza el estado local con el valor ingresado en el input
-    const handleSearch = (e) => {
-        setSearch(e.target.value)
-    }
-    // Se hace una búsqueda con los datos ingresados y se navega a la página de resultados de búsqueda
-    const handleSubmitSearch = (e) => {
-        e.preventDefault()
-        navigate(`/page/search/${search}`)
-    }
+    const { isLoggedIn } = useSelector(state => state.user)
 
 
     return (
-        <div className='containe_header'>
-            <div className='content-left'>
-                <Link to={'/page'}><h5>PostHive</h5></Link>
-                <div className='input-header'>
-                    <form onSubmit={handleSubmitSearch}>
-                        <input type="text" placeholder='Search publish...' value={search} onChange={handleSearch} />
-                    </form>
+        <div className={styles.containe_header}>
+            <div className={styles.wrapper_header}>
+                <div className={styles.content_left}>
+                    <Logo/>
+
                 </div>
-            </div>
-            <div className='content-right'>
-                <DropdownMenu />
+                <div className={styles.content_right}>
+                    {
+                        isLoggedIn && <DropdownMenu />
+                    }
+                    {
+                        !isLoggedIn && (
+                            <>
+                                <Link to={'/login'}><h5>Log in</h5></Link>
+                                <Link to={'/register'}><h5>Sign up</h5></Link>
+                            </>
+                        )
+
+                    }
+                </div>
             </div>
         </div>
     )

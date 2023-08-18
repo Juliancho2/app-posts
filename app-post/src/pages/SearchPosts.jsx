@@ -26,10 +26,10 @@ const SearchPosts = () => {
                     isLoading && <SpinnerLoader />
                 }
                 {
-                    posts.length === 0 && <h3>Search not found :(</h3>
+                    (posts.length === 0 && !isLoading ) && <h3>Search not found :(</h3>
                 }
                 {
-                    (posts && !isLoading) && posts.map(post => (<CardPost key={post.id} posts={post} />))
+                    (posts.length > 0 && !isLoading) && posts.map(post => (<CardPost key={post.id} posts={post} />))
                 }
             </div>
         </div>

@@ -1,12 +1,23 @@
 import axios from "axios";
 
-let baseUrl = 'https://api-posts-production.up.railway.app/api/posts'
+let baseUrl = 'http://localhost:3001/api/posts'
 let token = null
 
 const setToken = (newToken) => {
     token = `Bearer ${newToken}`
 }
 
+const getAllImgs = async () => {
+    try {
+        const res = await axios.get(baseUrl +'/images')
+        const { data } = res
+        return data
+    }
+    catch (error) {
+        console.error(error)
+        return { error: 'There was a problem getting the images' }
+    }
+}
 const getAllPosts = async () => {
     try {
         const res = await axios.get(baseUrl)
@@ -40,6 +51,7 @@ const getOnePost = async (id) => {
 }
 
 const createPost = async (post) => {
+    console.log(post)
     const config = {
         headers: {
             Authorization: token
@@ -50,7 +62,6 @@ const createPost = async (post) => {
         const { data } = res
         return data
     } catch (error) {
-        console.error(error)
         return { error: 'There was a problem creating the post' }
     }
 }
@@ -70,18 +81,17 @@ const delPost = async (id) => {
     }
 }
 const addComent = async (newComment) => {
-    const { contentToAdd, idPost } = newComment
+    const { contentToAdd, id } = newComment
     const config = {
         headers: {
             Authorization: token
         }
     }
     try {
-        const res = await axios.post(`${baseUrl}/comments/${idPost}`, contentToAdd, config)
+        const res = await axios.post(`${baseUrl}/comments/${id}`, contentToAdd, config)
         const { data } = await res
         return data
     } catch (error) {
-        console.error(error)
         return { error: 'There was a problem adding a comment to the post' }
     }
 }
@@ -118,16 +128,10 @@ const addLike = async (idPost) => {
 }
 
 const searchPosts = async (content) => {
-    const searchUrl = `https://api-posts-production.up.railway.app/api/search?content=${content}`
-    try {
-        const res = await axios.get(searchUrl)
-        const { data } = res
-        return data
-
-    } catch (error) {
-        console.error(error)
-        return { error: 'There was a problem with the post search' }
-    }
+    const searchUrl = `http://localhost:3001/api/search?content=${content}`
+    const res = await axios.get(searchUrl)
+    const { data } = res
+    return data
 }
 
 export {
@@ -140,5 +144,6 @@ export {
     delComment,
     setToken,
     getAllCommentsToPost,
-    searchPosts
+    searchPosts,
+    getAllImgs
 }

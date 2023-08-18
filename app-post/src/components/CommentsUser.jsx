@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteComment } from '../thunks/thunks'
-import './commentsUser.css'
+import styles from './commentsUser.module.css'
 
 const CommentsUser = ({ comment, post }) => {
     // Se obtiene el nombre de usuario del estado de la aplicación
@@ -21,17 +21,19 @@ const CommentsUser = ({ comment, post }) => {
     }
     const dateFormatted = new Date(date)
     return (
-        <div className={`container-comments-user ${darkMode ? 'container-comments-user-dark' : ''}`}>
-            <div className={`container-icon-remove-comment ${author !== username ? "hidden-post" : ''}`} >
+        <div className={`${styles.container_comments__user} ${darkMode ? styles.container_comments__user__dark : ''}`}>
+            <div className={`${styles.container_icon__remove___comment} ${author !== username ? styles.hidden_post : ''}`} >
                 <FontAwesomeIcon onClick={() => handleRemoveComment(id)} icon="fa-regular fa-square-minus" />
             </div>
-            <div className='comment-content'>
-                <div className='comment-info-user'>
-                    <img src='https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png' alt="" />
-                    <p>{author}</p>
+            <div className={styles.comment_content}>
+                <div className={styles.comment_info__user}>
+                    <img src='https://secure.gravatar.com/avatar/4c937fcd9d5af30251f03827d87fadfd?s=50&d=mm&r=g' alt="" />
+                    <div>
+                        <p>{author}</p>
+                        <small>{dateFormatted.getMonth() + 1}/{dateFormatted.getDate()}/{dateFormatted.getFullYear()} {dateFormatted.getHours()}:{dateFormatted.getMinutes().toString().padStart(2, '0')}</small>
+                    </div>
                 </div>
                 <p>{content}</p>
-                <small>{dateFormatted.getMonth() + 1}/{dateFormatted.getDate()}/{dateFormatted.getFullYear()} {dateFormatted.getHours()}:{dateFormatted.getMinutes().toString().padStart(2, '0')}</small>
             </div>
         </div>
     )

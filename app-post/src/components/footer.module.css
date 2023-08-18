@@ -1,0 +1,19 @@
+footer{
+    background:#0F0C29;
+    min-height: 10vh;
+
+}
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wrapper_text p{
+    color: gray;
+    font-size: 12px;
+}
+
+.wrapper_text > div a svg{
+    color: aliceblue;
+}

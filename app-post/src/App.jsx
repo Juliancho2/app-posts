@@ -13,6 +13,10 @@ import { fetchPosts } from "./thunks/thunks"
 import SearchPosts from "./pages/SearchPosts"
 import { setTheme } from "./slice/themeSlice"
 import './App.css'
+import HomePage from "./pages/HomePage"
+import SignUp from "./pages/SignUp"
+import PostDetail from "./pages/PostDetail"
+import CreatePost from "./components/CreatePost"
 
 
 function App() {
@@ -20,6 +24,7 @@ function App() {
   const userState = useSelector(state => state.user)
   // Obtiene el estado de las publicaciones del almacenamiento global
   const { posts } = useSelector(state => state.posts)
+  const { isLoggedIn } = useSelector(state => state.user)
 
   // Dispatcher para ejecutar acciones en el almacenamiento global
   const dispatch = useDispatch()
@@ -33,6 +38,7 @@ function App() {
   useEffect(() => {
     // Obtiene el usuario autenticado almacenado en el almacenamiento local del navegador
     const loggedUserJSON = window.localStorage.getItem('loggedNoteAppUser')
+    setToken(null)
     // Si existe un usuario autenticado
     if (loggedUserJSON) {
       // Convierte el JSON en un objeto de usuario
@@ -42,11 +48,12 @@ function App() {
       // Establece el token en el servicio de publicaciones
       setToken(user.token)
       // Si la ruta actual es la página principal y el usuario esta logueado, navega a la página de inicio
-      if (pathname === '/') navigation('/page')
+      // if (pathname === '/') navigation('/page')
       // En caso contrario, navega a la ruta actual
-      else navigation(`${pathname}`)
+      // else navigation(`${pathname}`)
     }
-  }, [pathname])
+    // setToken(null)
+  }, [pathname, isLoggedIn])
 
   useEffect(() => {
     // Ejecuta la acción de recuperar publicaciones en el almacenamiento global
@@ -66,22 +73,24 @@ function App() {
 
   return (
     <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/login" element={<SignUp />}></Route>
+          <Route path="/register" element={<SignUp />}></Route>
+          <Route path="/create-post" element={<CreatePost />}></Route>
+          <Route path="/post/:id" element={<PostDetail />}></Route>
+          <Route element={<ProtectRoutes isAllowed={!!userState.isLoggedIn} />}>
+            <Route path="/page/" element={<Home />} />
 
-      <Routes>
-        <Route path="/" element={<Login />}></Route>
-        <Route element={<ProtectRoutes isAllowed={!!userState.isLoggedIn} />}>
-          <Route path="/page/" element={<Home />} />
-
-        </Route>
-        <Route element={<ProtectRoutes isAllowed={!!userState.isLoggedIn} />}>
-          <Route path="/page/post/comments/:idPost" element={<CommentsDetails />} />
-        </Route>
-        <Route element={<ProtectRoutes isAllowed={!!userState.isLoggedIn} />}>
+          </Route>
+          <Route element={<ProtectRoutes isAllowed={!!userState.isLoggedIn} />}>
+            <Route path="/page/post/comments/:idPost" element={<CommentsDetails />} />
+          </Route>
           <Route path="page/search/:content" element={<SearchPosts />} />
-        </Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="*" element={<h2 style={{ "fontSize": "20px", "textAlign": "center" }}>Not found</h2>} />
-      </Routes>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="*" element={<h2 style={{ "fontSize": "20px", "textAlign": "center" }}>Not found</h2>} />
+        </Routes>
+
     </div>
   )
 }

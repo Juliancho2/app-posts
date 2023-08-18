@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import './dropdownMenu.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../slice/userslice';
-import Switch from './Switch';
+import { Link } from 'react-router-dom';
+import styles from './dropdownMenu.module.css'
+
 const DropdownMenu = () => {
     // Se utiliza dispatch de la libreria de Redux para despachar acciones
     const [showMenu, setShowMenu] = useState(false)
+    const { isLoggedIn } = useSelector(state => state.user)
 
     const dispatch = useDispatch()
     //Se obtiene el estado del usuaario
@@ -21,16 +22,17 @@ const DropdownMenu = () => {
     }
 
     return (
-        <div className="dropdown-menu">
-            <div className="dropdown-menu-toggle" onClick={() => setShowMenu(!showMenu)}>
+        <div className={styles.dropdown_menu}>
+            <div className={styles.dropdown_menu_toggle} onClick={() => setShowMenu(!showMenu)}>
 
                 <img src={userState.avatar} alt="" />
 
             </div>
             {showMenu && (
-                <ul className="dropdown-menu-list">
-                    <Switch />
-                    <li className="dropdown-menu-item" onClick={handleLogOut}>Logout</li>
+                <ul className={styles.dropdown_menu_list}>
+                    <Link to={'/'}>Home</Link>
+                    <Link to={'/page'}>My blogs</Link>
+                    <li className={styles.dropdown_menu_item} onClick={handleLogOut}>Logout</li>
 
                 </ul>
             )}

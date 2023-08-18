@@ -8,7 +8,11 @@ const searchPostSlice = createSlice({
         isLoading: false,
         error: false
     },
-    reducers: {},
+    reducers: {
+        setPosts:(state)=>{
+           state.posts=[] 
+        }
+    },
     extraReducers: (builder) => {
         // Extrareducers para busqueda de algun post
 
@@ -27,5 +31,5 @@ const searchPostSlice = createSlice({
 
 })
 
-
+export const {setPosts}=searchPostSlice.actions
 export default searchPostSlice.reducer

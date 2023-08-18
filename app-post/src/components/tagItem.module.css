@@ -1,0 +1,10 @@
+
+.tag_item{
+    border: solid #FFCD57 2px;
+    border-radius: 15px;
+    text-align: center;
+    padding: 3px 5px;
+    font-weight: bold;
+    color: rgb(213, 213, 213);
+    height: 25px;
+}

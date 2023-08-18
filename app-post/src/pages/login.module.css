@@ -1,0 +1,130 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    animation: fadeUp 1s ease-in-out forwards;
+}
+@keyframes fadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 350px;
+    height: 250px;
+    padding: 10px 10px;
+}
+
+.wrapper form {
+    width: 100%;
+}
+.wrapper form div{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    background: #f3f3f3;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    box-shadow: 0px 2px 4px rgba(225, 225, 225, 0.3);
+    border-radius: 5px;
+    padding-right: 0;
+    margin-top: 5px;
+}
+.wrapper form div img{
+    opacity: .5;
+}
+.wrapper form p{
+    color: #d4d4d4;
+    
+}
+.wrapper form p span{
+    cursor: pointer;
+    color: rgb(255, 200, 47);
+}
+.wrapper form p span:hover{
+    opacity: .5;
+    transition: .5s;
+}
+
+.wrapper input {
+    background: transparent;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+   
+}
+
+.wrapper button {
+    width: 100%;
+    background: #FFCD57;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    color: #000000;
+    transition: .5s;
+    margin-top: 10px;
+    border-radius:5px ;
+    font-weight: bold;
+}
+
+.wrapper button:hover {
+    opacity: .7;
+}
+
+.wrapper p {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.title_login {
+    margin-bottom: 10px;
+    font-size: 2.1rem;
+    color: #d4d4d4;
+    font-weight: bold;
+}
+
+.message-error-login {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px;
+    background: rgba(67, 67, 67, 0.247);
+    color: #ff2222;
+    border-radius: 5px;
+    padding: 5px;
+    bottom: 90px;
+    width: 70%;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media (max-width:850px) {
+    .container{
+        margin-top: 80px;
+        justify-content: flex-start;
+        min-height: 40vh;
+    }
+   
+}
+
+
+
+

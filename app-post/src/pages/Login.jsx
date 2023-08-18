@@ -1,15 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import Loader from '../components/Loader'
 import { login } from '../slice/userslice'
 import loginServices from '../services/login/loginServices'
 import { setToken } from '../services/postServices'
-import './login.css'
+import style from './login.module.css'
+import user from '../assets/usuario.png'
+import passwordIcon from '../assets/contraseña.png'
 
-const Login = () => {
-    const [loader, setLoader] = useState(false) // estado para controlar la carga
+const Login = ({setChangeForm,setLoader}) => {
+    
     const [username, setUsername] = useState('') // estado para controlar el nombre de usuario
     const [password, setPassword] = useState('') // estado para controlar la contraseña
     const [errorMessage, setErrorMessage] = useState(null) // estado para mostrar mensaje de error
@@ -61,39 +63,48 @@ const Login = () => {
 
     }
     return (
-        <div className='container'>
-            {
-                loader && <Loader />
-            }
+        <div className={style.container}>
+            
+            
+            <div className={style.wrapper}>
 
+                <h2 className={style.title_login}>Log In</h2>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <span>
+                            <img src={user} alt="" width={20} height={20} />
+                        </span>
+                        <input type="text"
+                            placeholder='username'
+                            autoComplete='username'
+                            name='username'
+                            value={username}
+                            onChange={handleChange} />
+                    </div>
+                    <br />
+                    <div>
+                        <span>
+                            <img src={passwordIcon} alt="" width={20} height={20} />
+                        </span>
+                        <input type="password"
+                            placeholder='password'
+                            autoComplete='current-password'
+                            value={password}
+                            name='password'
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <br />
+                    <button>Log in</button>
+                    <p>Are you not registered? <span onClick={()=>setChangeForm(true)}>Sign up</span></p>
+                </form>
+            </div>
             <div>
                 {
                     errorMessage && <h2 className='message-error-login'> {errorMessage}</h2>
                 }
             </div>
-            <div className='wrapper'>
-
-                <h2 className='title-login'>PostHive</h2>
-                <form onSubmit={handleSubmit}>
-                    <input type="text"
-                        placeholder='username'
-                        autoComplete='username'
-                        name='username'
-                        value={username}
-                        onChange={handleChange} />
-                    <br />
-                    <input type="password"
-                        placeholder='password'
-                        autoComplete='current-password'
-                        value={password}
-                        name='password'
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <button>LOGIN IN</button>
-                    <p>Are you not registered? <Link to='/register'>Sign up</Link></p>
-                </form>
-            </div>
+            
         </div>
     )
 }

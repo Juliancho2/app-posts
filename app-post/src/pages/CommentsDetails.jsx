@@ -10,7 +10,7 @@ import Header from '../components/Header'
 import Loader from '../components/Loader'
 import SpinnerLoader from '../components/SpinnerLoader'
 import { fetchPostComments } from '../thunks/thunks'
-import './commentsDetails.css'
+// import './commentsDetails.css'
 
 
 const CommentsDetails = () => {
