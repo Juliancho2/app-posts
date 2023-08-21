@@ -24,7 +24,7 @@ const Posts = () => {
                 }
                 
                 {
-                    (posts && !isLoading) && posts.filter(post=>post.user.id === userId ).map((post) => (<CardPostHome post={post} />))
+                    (posts && !isLoading) && posts.filter(post=>post.user.id === userId ).map((post,index) => (<CardPostHome key={index} post={post} />))
                 }
             </div>
         </div >

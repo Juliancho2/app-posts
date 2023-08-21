@@ -55,7 +55,7 @@ const PostDetail = () => {
                                             isLoading && < SpinnerLoader />
                                         }
                                         {
-                                            (postComments && !isLoading) && postComments.map(comment => (<CommentsUser post={postDetail} key={comment.id} comment={comment} />))
+                                            (postComments && !isLoading) && postComments.map((comment,index) => (<CommentsUser post={postDetail} key={comment.id} comment={comment} />))
                                         }
                                         <AddComment />
                                     </div>
@@ -68,7 +68,7 @@ const PostDetail = () => {
                                         {
                                             (postDetail && posts.length > 0) &&
                                             posts.filter(post => post.id !== postDetail.id).slice(0, 5).map((post) => (
-                                                <li>
+                                                <li key={post.id}>
                                                     <Link to={'/post/' + post.id}>
                                                         {post.title}
                                                     </Link>

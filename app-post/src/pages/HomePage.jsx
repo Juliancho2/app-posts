@@ -29,8 +29,8 @@ const HomePage = () => {
                         }
                         {
                             !isLoading && (
-                                [...posts].slice(0, 1).map(post => (
-                                    <Link to={`/post/${post.id}`} className={styles.post_recent} >
+                                [...posts].slice(0, 1).map((post,index) => (
+                                    <Link key={index} to={`/post/${post.id}`} className={styles.post_recent} >
                                         <CardPostRecent post={post} />
                                     </Link>
                                 ))
@@ -38,8 +38,9 @@ const HomePage = () => {
                         }
                         {
                             !isLoading && (
-                                [...posts].slice(1, 4).map(post => (
-                                    <Link to={`/post/${post.id}`} className={styles.post_recents}>
+                                [...posts].slice(1, 4).map((post,index) => (
+                                    <Link key={index} to={`/post/${post.id}`} className={styles.post_recents}>
+
                                         <CardPostRecents post={post} />
                                     </Link>
                                 ))

@@ -17,7 +17,7 @@ const CardPostRecent = ({post}) => {
             </div>
             <div style={{ display: 'flex', gap: '5px' }}>
                 {
-                    post.tags.map((tag) => (<TagItem tag={tag} />))
+                    post.tags.map((tag,index) => (<TagItem key={index} tag={tag} />))
                 }
             </div>
         </div>

@@ -16,7 +16,7 @@ const CardPostRecents = ({post}) => {
                 <p dangerouslySetInnerHTML={{ __html: truncateString(post.content, 100) }}></p>
                 <div style={{ display: 'flex', gap: '5px', width: '100%' }}>
                     {
-                        post.tags.map((tag) => (<TagItem tag={tag} />))
+                        post.tags.map((tag,index) => (<TagItem key={index} tag={tag} />))
                     }
                 </div>
             </div>
