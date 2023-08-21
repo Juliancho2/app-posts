@@ -1,6 +1,7 @@
 import axios from "axios";
+const apiUrl=import.meta.env.VITE_API_BASE_URL
+const baseUrl = `${apiUrl}/api/posts`;
 
-let baseUrl = 'http://localhost:3001/api/posts'
 let token = null
 
 const setToken = (newToken) => {
@@ -25,7 +26,6 @@ const getAllPosts = async () => {
         return data
     }
     catch (error) {
-        console.error(error)
         return { error: 'There was a problem getting the posts' }
     }
 }
@@ -107,7 +107,6 @@ const delComment = async (infoComment) => {
         const res = await axios.delete(`${baseUrl}/comments/${id}`, config)
         return infoComment
     } catch (error) {
-        console.error(error)
         return { error: 'There was a problem deleting the post comment' }
     }
 }
@@ -122,13 +121,12 @@ const addLike = async (idPost) => {
         const res = await axios.post(`${baseUrl}/${idPost}/likes`, {}, config)
         return idPost
     } catch (error) {
-        console.error(error)
         return { error: 'There was a problem adding likes to the post' }
     }
 }
 
 const searchPosts = async (content) => {
-    const searchUrl = `http://localhost:3001/api/search?content=${content}`
+    const searchUrl = `${apiUrl}/api/search?content=${content}`
     const res = await axios.get(searchUrl)
     const { data } = res
     return data

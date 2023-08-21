@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import styles from './signUp.module.css'
 import imageHome from "../assets/undraw_social_user_re_8cky.svg"
-import Login from './Login'
-import Register from './Register'
 import Loader from '../components/Loader'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Login from '../components/Login'
+import Register from '../components/Register'
 
 const SignUp = () => {
     const [changeForm, setChangeForm] = useState(false)

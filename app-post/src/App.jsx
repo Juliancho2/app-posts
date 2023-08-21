@@ -3,10 +3,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom"
 import { ProtectRoutes } from "./components/ProtectRoutes"
-import CommentsDetails from "./pages/CommentsDetails"
 import Home from "./pages/Home"
-import Login from "./pages/Login"
-import Register from "./pages/Register"
 import { login } from "./slice/userslice"
 import { setToken } from "./services/postServices"
 import { fetchPosts } from "./thunks/thunks"
@@ -83,11 +80,7 @@ function App() {
             <Route path="/page/" element={<Home />} />
 
           </Route>
-          <Route element={<ProtectRoutes isAllowed={!!userState.isLoggedIn} />}>
-            <Route path="/page/post/comments/:idPost" element={<CommentsDetails />} />
-          </Route>
           <Route path="page/search/:content" element={<SearchPosts />} />
-          <Route path="/register" element={<Register />}></Route>
           <Route path="*" element={<h2 style={{ "fontSize": "20px", "textAlign": "center" }}>Not found</h2>} />
         </Routes>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import style from '../pages/register.module.css'
+import style from './register.module.css'
 
 const MessageErrorValidate = ({ message = [] }) => {
     return (

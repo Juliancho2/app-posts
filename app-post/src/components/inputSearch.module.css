@@ -11,9 +11,8 @@
 }
 .input_header form{
     display: flex;
-    /* border: 1px solid rgb(202, 202, 202); */
-    /* background: rgb(244, 244, 244); */
     background: white;
+    align-items: center;
     height: 100%;
     max-width: 320px;
     width: 100%;
@@ -29,7 +28,7 @@
     border-radius: 5px;
     width: 80px;
 }
-.input_header input {
+.input_header form input {
     border: none;
     width: 100%;
     min-width: 120px;

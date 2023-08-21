@@ -7,26 +7,24 @@ import { Link } from 'react-router-dom';
 
 const Posts = () => {
     const { posts, isLoading } = useSelector(state => state.posts)
-    const { username } = useSelector(state => state.user)
+    const { username,userId } = useSelector(state => state.user)
 
     if (!posts) return
 
     return (
         <div className={styles.container_posts}>
             <div className={styles.hero} >
-                <h1>¡Welcome {username}!</h1>
+                <h1>¡Bienvenido {username}!</h1>
                 <Link to={'/create-post'}>New entry</Link>
             </div>
-            <h2>My blogs</h2>
+            <h2>Mis blogs</h2>
             <div className={styles.wrapper_posts}>
                 {
                     isLoading && <SpinnerLoader />
                 }
+                
                 {
-                    posts.length === 0 && <h3>No hay posts</h3>
-                }
-                {
-                    (posts && !isLoading) && posts.map((post) => (<CardPostHome post={post} />))
+                    (posts && !isLoading) && posts.filter(post=>post.user.id === userId ).map((post) => (<CardPostHome post={post} />))
                 }
             </div>
         </div >

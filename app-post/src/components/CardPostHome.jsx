@@ -31,46 +31,45 @@ const CardPostHome = ({ post }) => {
         // Se actualiza el estado de isActive
         setIsActive((prev) => !prev)
     }
-    
-    return (
 
-        <div className={styles.card}>
-            <Link to={`/post/${id}`} style={{ textDecoration: 'none' }}>
-                <div className={styles.card_img}>
-                    <img src={'http://localhost:3001/' + cover} alt={cover} />
+    return (
+            <div className={styles.card}>
+                <Link to={`/post/${id}`} style={{ textDecoration: 'none' }}>
+                    <div className={styles.card_img}>
+                        <img src={import.meta.env.VITE_API_BASE_URL + '/' + cover} alt={cover} />
+                    </div>
+                </Link>
+                <div className={styles.card_body}>
+                    <h4>{title}</h4>
+                    <p dangerouslySetInnerHTML={{ __html: truncateString(content, 200) }}>
+                    </p>
                 </div>
-            </Link>
-            <div className={styles.card_body}>
-                <h4>{title}</h4>
-                <p dangerouslySetInnerHTML={{__html:truncateString(content,200)}}>
-                </p>
-            </div>
-            <div style={{display:'flex',gap:'5px',padding:'5px 10px'}}>
-                {
-                    post.tags.length > 0 && post.tags.map((tag)=>(<TagItem tag={tag}/>))
-                }
-            </div>
-            <div className={styles.card_footer}>
-                <div className={styles.card_user}>
-                    <img src={user.avatar} alt="" />
-                    <div>
-                        <p>{username}</p>
-                        <small>{dateFormatter(date)}</small>
+                <div style={{ display: 'flex', gap: '5px', padding: '5px 10px' }}>
+                    {
+                        post.tags.length > 0 && post.tags.map((tag) => (<TagItem tag={tag} />))
+                    }
+                </div>
+                <div className={styles.card_footer}>
+                    <div className={styles.card_user}>
+                        <img src={user.avatar} alt="" />
+                        <div>
+                            <p>{username}</p>
+                            <small>{dateFormatter(date)}</small>
+                        </div>
+                    </div>
+
+                    <div className={`${styles.card_actions} ${darkMode ? styles.card_actions__dark : ''}`}>
+                        <p className={styles.card_comments}>
+                            <FontAwesomeIcon icon="fa-regular fa-comment" />
+                            <small>{comments.length}</small>
+                        </p>
+                        <p onClick={() => handleLike(id)} className={`${styles.card_likes} ${likesBy.includes(userId) ? styles.active_like : ''}`} >
+                            <FontAwesomeIcon icon="fa-solid fa-heart" />
+                            <small>{likesNumber}</small>
+                        </p>
                     </div>
                 </div>
-
-                <div className={`${styles.card_actions} ${darkMode ? styles.card_actions__dark : ''}`}>
-                    <p className={styles.card_comments}>
-                        <FontAwesomeIcon icon="fa-regular fa-comment" />
-                        <small>{comments.length}</small>
-                    </p>
-                    <p onClick={() => handleLike(id)} className={`${styles.card_likes} ${likesBy.includes(userId) ? styles.active_like : ''}`} >
-                        <FontAwesomeIcon icon="fa-solid fa-heart" />
-                        <small>{likesNumber}</small>
-                    </p>
-                </div>
             </div>
-        </div>
 
     )
 }

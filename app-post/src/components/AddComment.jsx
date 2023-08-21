@@ -73,7 +73,7 @@ const AddComment = () => {
             <div className={styles.wrapper_comment}>
                 <div className={styles.wrapper_comment__text}>
                     <h2>Deja un comentario</h2>
-                    <small>Tu dirección de correo electrónico no será publicada. Los campos obligatorios están marcados con *</small>
+                    <small>Tu dirección de correo electrónico no será publicada. </small>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <textarea placeholder='Write a comment...' value={contentToAdd.content} onChange={handleChange} />

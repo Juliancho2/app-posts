@@ -32,7 +32,7 @@ const DropdownMenu = () => {
                 <ul className={styles.dropdown_menu_list}>
                     <Link to={'/'}>Home</Link>
                     <Link to={'/page'}>My blogs</Link>
-                    <li className={styles.dropdown_menu_item} onClick={handleLogOut}>Logout</li>
+                    <li className={styles.dropdown_menu_item} onClick={handleLogOut}>Log out</li>
 
                 </ul>
             )}

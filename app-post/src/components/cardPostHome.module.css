@@ -4,9 +4,9 @@
     margin-bottom: 30px;
     overflow: hidden;
 
-    -webkit-box-shadow: -6px 6px 5px -4px rgba(207,203,207,0.58);
--moz-box-shadow: -6px 6px 5px -4px rgba(207,203,207,0.58);
-box-shadow: -6px 6px 5px -4px #25243F;
+    -webkit-box-shadow: -6px 6px 5px -4px rgba(43, 26, 93, 0.58);
+-moz-box-shadow: -6px 6px 5px -4px rgba(28, 33, 90, 0.58);
+box-shadow: -6px 6px 5px -4px #0c0c1ab8;
 }
 
 
@@ -45,6 +45,7 @@ box-shadow: -6px 6px 5px -4px #25243F;
     display: flex;
     gap: 5px;
     align-items: center;
+    color: grey;
 }
 .card_user img{
     width: 30px;

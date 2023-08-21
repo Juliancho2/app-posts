@@ -8,14 +8,12 @@ import styles from './cardPost.module.css'
 import { dateFormatter } from '../utils/dateFormatter'
 
 const CardPost = ({ posts }) => {
-    const [isActive, setIsActive] = useState(false)
     // Se obtiene el usuario actual desde el store de usuario
     const { isLoggedIn, userId } = useSelector(state => state.user)
     // Se desestructura la información de cada post
     const { id, content, comments, likesBy, user, date, cover, likesNumber, title } = posts
     // Se obtiene el estado del modo oscuro desde el store de tema
     const { darkMode } = useSelector(state => state.theme)
-    const navigate= useNavigate()
 
     const dispatch = useDispatch()
 
@@ -30,13 +28,10 @@ const CardPost = ({ posts }) => {
         dispatch(addLikeToPost(id));
         // Se dispacha la acción para establecer los likes del post
         dispatch(setLikes({ id, userId }));
-        // Se actualiza el estado de isActive
-        setIsActive((prev) => !prev)
     }
     // Función que maneja la acción de eliminar un post
-    const handleRemovePost=(id)=>{
+    const handleRemovePost = (id) => {
         dispatch(deletePost(id))
-        // navigate('/') 
     }
 
     return (
@@ -45,20 +40,21 @@ const CardPost = ({ posts }) => {
                 <h2>{title}</h2>
                 <div className={styles.card_links}>
                     <div>
-                        <Link to={''}>Deja un comentario</Link> /
                         <small>Por: {posts.user.username}</small> /
                         <small>{dateFormatter(posts.date)}</small>
                     </div>
-                    <div className={styles.card_btn__edit}>
-                        <FontAwesomeIcon icon="fa-regular fa-trash-can" />
-                        <FontAwesomeIcon onClick={()=>handleRemovePost(id)} icon="fa-regular fa-pen-to-square" />
-                    </div>
-                    
+                    {
+                        (isLoggedIn && userId === posts.user.id) && <div className={styles.card_btn__edit}>
+                            <FontAwesomeIcon onClick={() => handleRemovePost(id)} icon="fa-regular fa-trash-can" />
+                            <FontAwesomeIcon icon="fa-regular fa-pen-to-square" />
+                        </div>
+                    }
+
                 </div>
                 {
                     cover && (
                         <div className={styles.container_img__post}>
-                            <img src={'http://localhost:3001/' + cover} alt="" />
+                            <img src={import.meta.env.VITE_API_BASE_URL + '/' + cover} alt="" />
                         </div>
                     )
                 }
@@ -69,7 +65,7 @@ const CardPost = ({ posts }) => {
             </div>
             <div className={`${styles.card_actions} ${darkMode ? styles.card_actions__dark : ''}`}>
                 <p className={styles.card_comments}>
-                    <Link to={`/post/${id}`} ><FontAwesomeIcon icon="fa-regular fa-comment" /></Link>
+                    <FontAwesomeIcon icon="fa-regular fa-comment" />
                     <small>{comments.length}</small>
                 </p>
                 {

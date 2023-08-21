@@ -9,11 +9,16 @@ footer{
     text-align: center;
 }
 
-.wrapper_text p{
+.wrapper_text > p{
     color: gray;
     font-size: 12px;
 }
-
-.wrapper_text > div a svg{
-    color: aliceblue;
+.wrapper_text div{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+.wrapper_text  div svg{
+    fill: #c3c1c1;
 }

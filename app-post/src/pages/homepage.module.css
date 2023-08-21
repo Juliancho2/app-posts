@@ -1,12 +1,14 @@
 
 .container{
+  display: grid;
   min-height: 100vh;
   background: #0f0c29;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to bottom, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 animation: loadPage .5s ease;
 
-  padding-top: 120px;
+  /* padding-top: 120px; */
+  padding-top:60px ;
   padding-bottom: 80px;
   box-sizing: border-box;
 }
@@ -19,11 +21,16 @@ animation: loadPage .5s ease;
       opacity: 100%;
   }
 }
-.container > h2{
-  font-size: 40px;
+.container > .hero h2{
+  font-size: 30px;
   text-align: center;
   color: #ededed;
-  
+  width: 70%;
+  margin: 0 auto;
+}
+.container > .hero h2 span{
+  font-size: 40px;
+  color: #FFCD57;
 }
 .container h3{
   max-width: 1200px;
@@ -33,13 +40,20 @@ animation: loadPage .5s ease;
   color: #ededed;
   margin-top: 80px;
 }
-.container > small{
+.container .hero > small{
   display: flex;
   font-size: 18px;
   color: rgb(169, 169, 169);
   justify-content: center;
   text-align: center;
   margin: 18px 0;
+}
+.hero{
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .container_grid{
   display: grid;
