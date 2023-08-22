@@ -119,3 +119,12 @@ background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
     opacity: .8;
     transition: .5s;
 }
+
+@media (max-width:700px) {
+    .wrapper_post{
+        width: 90%;
+    }
+    .container_post {
+        padding: 40px 0;
+    }
+}

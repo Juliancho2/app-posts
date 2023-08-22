@@ -6,7 +6,7 @@
     background: #0f0c29;
     background: -webkit-linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
     background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
-    animation: loadPage .5s ease;
+    animation: loadPage .5s ease; 
 }
 
 @keyframes loadPage {
@@ -106,4 +106,16 @@
     margin-bottom: 25px;
     list-style: none;
     color: rgb(169, 169, 169);
+}
+@media (max-width:700px) {
+    .main{
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 0;
+    }
+    .grid_right{
+        padding: 5px 10px;
+        align-items: start;
+        margin: 0 10px;
+    }
 }
