@@ -7,7 +7,6 @@ background: -webkit-linear-gradient(to bottom, #24243e, #302b63, #0f0c29);  /* C
 background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 animation: loadPage .5s ease;
 
-  /* padding-top: 120px; */
   padding-top:60px ;
   padding-bottom: 80px;
   box-sizing: border-box;
@@ -67,7 +66,6 @@ animation: loadPage .5s ease;
 }
 
 .container_img{
-  max-width: 200px;
   height: 200px;
   min-width: 200px;
   grid-row: 1/3;
@@ -96,6 +94,9 @@ animation: loadPage .5s ease;
 .post_recents{
   text-decoration: none;
 }
+.post_recents_text{
+  padding: 20px 30px; 
+}
 .post_recents_text h2{
   font-size: 18px;
   color: rgb(236, 236, 236);
@@ -108,4 +109,18 @@ animation: loadPage .5s ease;
 .post_recents_text p{
   font-size: 12px;
   color: rgb(169, 169, 169);
+}
+
+@media (max-width:700px) {
+  .container_grid{
+    grid-template-columns: 1fr;
+    gap: 15px;
+    
+  }
+  .container_recents{
+    flex-direction: column;
+  }
+  .post_recents__text{
+    padding: 0;
+  }
 }
